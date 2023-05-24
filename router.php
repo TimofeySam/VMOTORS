@@ -6,19 +6,19 @@ session_start(); // Запускаем сессию и получаем супе
 $requestURI = $_SERVER['REQUEST_URI']; // Получаем URI по которому запрошена страница
 $method = $_SERVER['REQUEST_METHOD']; // Получаем метод запроса GET POST
 $path = explode('/', $requestURI);
-require_once('php/db.php');
-require_once('php/classes/UserController.php');
-require_once('php/classes/ArticleController.php');
-require_once('php/classes/Route.php');
-require_once('php/classes/simple_html_dom.php');
+require_once('1/db.php');
+require_once('1/classes/UserController.1');
+require_once('1/classes/ArticleController.1');
+require_once('1/classes/Route.1');
+require_once('1/classes/simple_html_dom.1');
 
 /*
  * Маршрутизация
  * Класс Route имеет два метода get() и post()
  * */
 Route::get('/', function (){return ArticleController::getArticles();}, "Добро пожаловать");
-Route::get('/reg', function (){return file_get_contents("reg.php");}, "Регистрация");
-Route::get('/login', function (){return file_get_contents('login.php');}, "Авторизация");
+Route::get('/reg', function (){return file_get_contents("reg.1");}, "Регистрация");
+Route::get('/login', function (){return file_get_contents('login.1');}, "Авторизация");
 Route::get('/article/{id}', function (){return file_get_contents('article.html');});
 Route::get("/getUsers", function (){UserController::getUsers();});
 Route::get('/users', function (){return file_get_contents('users.html');});
@@ -29,8 +29,8 @@ Route::get('/getUserData', function (){UserController::getUserData();});
 Route::get('/getComment/{id}', function ($id){return ArticleController::getCommentsByArticleId($id);});
 
 if($_SESSION['id']){
-    Route::get('/profile', function (){return file_get_contents('profile.php');});
-    Route::get('/addArticle', function (){return file_get_contents('addArticle.php');});
+    Route::get('/profile', function (){return file_get_contents('profile.1');});
+    Route::get('/addArticle', function (){return file_get_contents('addArticle.1');});
     Route::get('/deleteArticle', function (){ArticleController::deleteArticle(null);});
     Route::get('/updateArticle', function (){return file_get_contents('updateArticle.html');});
     Route::get('/exit', function (){UserController::logout();});

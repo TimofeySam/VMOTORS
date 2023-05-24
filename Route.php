@@ -37,12 +37,12 @@ class Route{
             $uriChunks = explode('/',$path);
             if($uriChunks[1] == $paths[1]){
                 $content = $callback($paths[2]);
-                require_once('template.php');
+                require_once('template.1');
                 exit;
             }
         }else if($path == '/'.$paths[1] and $_SERVER['REQUEST_METHOD']== "GET") {
             $content = $callback();
-            require_once('template.php');
+            require_once('template.1');
             exit;
         }
     }
